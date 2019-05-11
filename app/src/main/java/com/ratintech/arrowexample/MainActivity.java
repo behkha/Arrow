@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         progressBar.setProgress(0);
                     }
                 })
-                .build(), true);
+                .build());
     }
 
     public boolean hasPermissions(Context context, String... permissions) {

@@ -9,13 +9,10 @@ public class Arrow {
 
     private static ArrayList<ArrowDownload> arrowDownloads = new ArrayList<>();
 
-    public static boolean download(ArrowDownload arrowDownload, boolean singular){
+    public static boolean download(ArrowDownload arrowDownload){
         if (!arrowDownloads.contains(arrowDownload)) {
             arrowDownloads.add(arrowDownload);
-            if (singular)
-                arrowDownload.execute();
-            else
-                arrowDownload.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            arrowDownload.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             return true;
         }
         return false;
