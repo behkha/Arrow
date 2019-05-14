@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class Arrow {
 
+    public static ArrowImageCache imageCache = new ArrowImageCache( ((int) (Runtime.getRuntime().maxMemory() / 1024)) / 8);
+
     private static ArrayList<ArrowDownload> arrowDownloads = new ArrayList<>();
 
     public static boolean download(ArrowDownload arrowDownload){
@@ -53,5 +55,9 @@ public class Arrow {
                 return arrowDownload;
             }
         return null;
+    }
+
+    public static ArrowImageLoader.ImageLoaderBuilder getImageLoader(){
+        return new ArrowImageLoader.ImageLoaderBuilder(imageCache);
     }
 }

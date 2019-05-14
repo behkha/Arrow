@@ -2,7 +2,9 @@ package com.ratintech.arrowexample;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,7 +13,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.LruCache;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.ratintech.arrow.Arrow;
 import com.ratintech.arrow.ArrowDownload;
@@ -33,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(!hasPermissions(this, PERMISSIONS)){
+        if(!hasPermissions(this, PERMISSIONS))
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
-        } else
-            download();
+//        } else
+//            download();
 
+        ImageView imageView = findViewById(R.id.imv);
+        Arrow.getImageLoader().setImageView(imageView).setUrl("http://file.chaarpaye.ir/categories/default/OCK3Xw83AOYwBWgIeIwGzIDUFyeLI4pOKWVgINnHuZoYe754jpeg.jpg").load();
     }
 
     @Override
@@ -102,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
 
     @Override
     protected void onStop() {
