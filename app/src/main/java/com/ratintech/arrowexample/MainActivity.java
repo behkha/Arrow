@@ -40,11 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(!hasPermissions(this, PERMISSIONS))
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
-//        } else
-//            download();
 
-        ImageView imageView = findViewById(R.id.imv);
-        Arrow.getImageLoader().setImageView(imageView).setUrl("http://file.chaarpaye.ir/categories/default/OCK3Xw83AOYwBWgIeIwGzIDUFyeLI4pOKWVgINnHuZoYe754jpeg.jpg").load();
     }
 
     @Override
