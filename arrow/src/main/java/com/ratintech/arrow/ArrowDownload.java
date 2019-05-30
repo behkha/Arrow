@@ -99,7 +99,9 @@ public class ArrowDownload extends AsyncTask<String , Integer , File> {
             if (this.downloadListener != null)
                 this.downloadListener.onDownloadInterrupted();
         } else {
-
+            if (isDownloaded()) {
+                return new File( this.directory + File.separator +  fileName );
+            }
             try {
                 File file = new File(directory);
                 if (!file.exists())
